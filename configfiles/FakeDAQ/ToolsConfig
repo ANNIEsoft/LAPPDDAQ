@@ -1,0 +1,6 @@
+#test1 DummyTool configfiles/DummyToolConfig
+#test2 DummyTool configfiles/DummyToolConfig
+MonitorReceive MonitorReceive configfiles/FakeDAQ/MonitorReceiveConfig
+SlowControlConfig SlowControlConfig  configfiles/FakeDAQ/SlowControlConfig
+LAPPDConfig LAPPDConfig  configfiles/FakeDAQ/LAPPDConfig
+LAPPDDataReceive LAPPDDataReceive configfiles/FakeDAQ/LAPPDDataReceive
