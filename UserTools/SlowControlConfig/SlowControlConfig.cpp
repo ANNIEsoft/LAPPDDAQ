@@ -14,10 +14,10 @@ bool SlowControlConfig::Initialise(std::string configfile, DataModel &data){
   if(!m_variables.Get("verbose",m_verbose)) m_verbose=1;
 
   std::string ip="";
-  std::string port=0;
+  std::string port="0";
 
   if(!m_variables.Get("IP",ip)) ip="127.0.0.1";
-  if(!m_variables.Get("port",port)) port="7777";
+  if(!m_variables.Get("port",port)) port="4444";
 
   ConfigSend= new zmq::socket_t(*m_data->context, ZMQ_DEALER);
 
@@ -30,15 +30,17 @@ bool SlowControlConfig::Initialise(std::string configfile, DataModel &data){
   items[0].revents =0;
 
   // SlowControl_config_Data_class tmp;
+  LAPPDMoniterData LAPPDMonData;
   // fill config variables for start of run 
-
+  //todo
+  
   zmq::poll(&items[0], 1, -1);
   
   if ((items [0].revents & ZMQ_POLLOUT)) {
     
-    //tmp.Send(ConfigSend);
+    LAPPDMonData.SendConfig(ConfigSend);
     std::cout<<"Sending SlowControl start config variables"<<std::endl;
-    //tmp.Print();  
+    LAPPDMonData.Print();  
   }
 
 
@@ -55,15 +57,16 @@ bool SlowControlConfig::Execute(){
 bool SlowControlConfig::Finalise(){
 
   // SlowControl_Config_Data_class tmp;
+  LAPPDMoniterData LAPPDMonData;
   // fill config variables for end of run
 
   zmq::poll(&items[0], 1, -1);
 
   if ((items [0].revents & ZMQ_POLLOUT)) {
 
-    //tmp.Send(ConfigSend);
+    LAPPDMonData.SendConfig(ConfigSend);
     std::cout<<"Sending SlowControl end config variables"<<std::endl;
-    //tmp.Print();
+    LAPPDMonData.Print();
   }
 
   delete ConfigSend;
