@@ -52,20 +52,11 @@ bool MonitorReceive::Execute(){
       std::istringstream tmp(static_cast<char*>(command.data()));
       std::cout<<"received monitoring data of type: "<<tmp.str()<<std::endl;
 
-      if(tmp.str()=="xxx"){
-
-
+      if(tmp.str()=="LAPPDMonData"){
 	//receive slowcontrol mon data
-	//m_data->Slow_control_mon_data_class.Receive(MonitorReceive);
-	//m_data->Slow_control_mon_data_class.Print();
-
-
-
-      }
-
-      else if(tmp.str()=="yyy"){
-
-
+	m_data->LAPPDMonData.ReceiveMon(MonitorReceive);
+	m_data->LAPPDMonData.Print();
+      }else if(tmp.str()=="LAPPDDaqMonData"){
 	// receive LAPPD monitoring data
 	//m_data->LAPPD_mon_data_class.Receive(MonitorReceive);
         //m_data->LAPPD_mon_data_class.Print();
