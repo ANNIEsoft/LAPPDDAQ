@@ -39,10 +39,9 @@ bool LAPPDDataReceive::Execute(){
   
   if ((items [0].revents & ZMQ_POLLIN)) {
     
-
-    //m_data->LAPPDData.Receive(DataReceive);
+    m_data->psec.Receive(DataReceive);
     std::cout<<"Received LAPPD Data"<<std::endl;
-    //m_data->LAPPDData.Print();
+    m_data->LAPPDData.Print();
   
   }
 
