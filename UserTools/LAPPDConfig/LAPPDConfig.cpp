@@ -14,7 +14,7 @@ bool LAPPDConfig::Initialise(std::string configfile, DataModel &data){
   if(!m_variables.Get("verbose",m_verbose)) m_verbose=1;
 
   std::string ip="";
-  std::string port=0;
+  std::string port="0";
 
   if(!m_variables.Get("IP",ip)) ip="127.0.0.1";
   if(!m_variables.Get("port",port)) port="6666";
@@ -30,15 +30,17 @@ bool LAPPDConfig::Initialise(std::string configfile, DataModel &data){
   items[0].revents =0;
 
   // LAPPDConfig_Data_class tmp;
+  Config conf;
   // fill config variables for start of run 
+  //todo
 
   zmq::poll(&items[0], 1, -1);
   
   if ((items [0].revents & ZMQ_POLLOUT)) {
     
-    //tmp.Send(ConfigSend);
+    conf.Send(ConfigSend);
     std::cout<<"Sending LAPPD start config variables"<<std::endl;
-    //tmp.Print();
+    conf.Print();
   
   }
 
@@ -53,18 +55,6 @@ bool LAPPDConfig::Execute(){
 
 
 bool LAPPDConfig::Finalise(){
-
-  // LAPPDConfig_Data_class tmp;
-  // fill config variables for end of run
-
-  zmq::poll(&items[0], 1, -1);
-
-  if ((items [0].revents & ZMQ_POLLOUT)) {
-
-    //tmp.Send(ConfigSend);
-    std::cout<<"Sending LAPPD end config variables"<<std::endl;
-    //tmp.Print();
-  }
 
   delete ConfigSend;
   ConfigSend=0;
