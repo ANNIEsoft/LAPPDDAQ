@@ -14,7 +14,7 @@ bool LAPPDDataReceive::Initialise(std::string configfile, DataModel &data){
   if(!m_variables.Get("verbose",m_verbose)) m_verbose=1;
 
   std::string ip="";
-  std::string port=0;
+  std::string port="0";
 
   if(!m_variables.Get("IP",ip)) ip="127.0.0.1";
   if(!m_variables.Get("port",port)) port="8888";
