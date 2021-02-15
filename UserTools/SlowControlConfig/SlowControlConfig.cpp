@@ -30,17 +30,18 @@ bool SlowControlConfig::Initialise(std::string configfile, DataModel &data){
   items[0].revents =0;
 
   // SlowControl_config_Data_class tmp;
-  LAPPDMoniterData LAPPDMonData;
+  LAPPDMoniterData LAPPDMon;
   // fill config variables for start of run 
-  LAPPDMonData.SetDefaults();
+  LAPPDMon.SetDefaults();
+  LAPPDMon.recieveFlag = 1;
   
   zmq::poll(&items[0], 1, -1);
   
   if ((items [0].revents & ZMQ_POLLOUT)) {
     
-    LAPPDMonData.Send_Config(ConfigSend);
+    LAPPDMon.Send_Config(ConfigSend);
     std::cout<<"Sending SlowControl start config variables"<<std::endl;
-    LAPPDMonData.Print();  
+    LAPPDMon.Print();  
   }
 
 
