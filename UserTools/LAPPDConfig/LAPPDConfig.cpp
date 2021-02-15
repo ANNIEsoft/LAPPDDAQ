@@ -32,7 +32,8 @@ bool LAPPDConfig::Initialise(std::string configfile, DataModel &data){
   // LAPPDConfig_Data_class tmp;
   Config conf;
   // fill config variables for start of run 
-  //todo
+  conf.SetDefaults();
+  conf.receiveFlag = 1;
 
   zmq::poll(&items[0], 1, -1);
   
