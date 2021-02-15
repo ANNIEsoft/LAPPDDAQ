@@ -14,11 +14,11 @@
 
 #include <zmq.hpp>
 
-//#include <LAPP_DDATA_CLASS.h>
+#include <PsecData.h>
 //#include <LAPP_MON_CLASS.h>
-//#include <LAPP_Config_CLASS.h>
+#include <Config.h>
 //#include <SlowControl_MON_CLASS.h>
-//#include <SlowControl_Config_CLASS.h>
+#include <LAPPDMoniterData.h>
 
 /**
 * \class DataModel
@@ -52,6 +52,8 @@ class DataModel {
   zmq::context_t* context; ///< ZMQ contex used for producing zmq sockets for inter thread,  process, or computer communication
 
   //LAPPDData_CLASS
+  LAPPDMoniterData LAPPDMonData;
+  PsecData psec;
 
  private:
 
