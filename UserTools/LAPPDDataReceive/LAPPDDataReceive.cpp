@@ -41,7 +41,7 @@ bool LAPPDDataReceive::Execute(){
     
     m_data->psec.Receive(DataReceive);
     std::cout<<"Received LAPPD Data"<<std::endl;
-    m_data->LAPPDData.Print();
+    m_data->psec.Print();
   
   }
 
