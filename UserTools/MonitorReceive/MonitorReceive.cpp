@@ -54,7 +54,7 @@ bool MonitorReceive::Execute(){
 
       if(tmp.str()=="LAPPDMonData"){
 	//receive slowcontrol mon data
-	m_data->LAPPDMonData.Receive_Mon(MonitorReceive);
+	m_data->LAPPDMonData.Receive_Mon(MonitorReceiver);
 	m_data->LAPPDMonData.Print();
       }else if(tmp.str()=="LAPPDDaqMonData"){
 	// receive LAPPD monitoring data
