@@ -32,13 +32,13 @@ bool SlowControlConfig::Initialise(std::string configfile, DataModel &data){
   // SlowControl_config_Data_class tmp;
   LAPPDMoniterData LAPPDMonData;
   // fill config variables for start of run 
-  //todo
+  LAPPDMonData.SetDefaults();
   
   zmq::poll(&items[0], 1, -1);
   
   if ((items [0].revents & ZMQ_POLLOUT)) {
     
-    LAPPDMonData.SendConfig(ConfigSend);
+    LAPPDMonData.Send_Config(ConfigSend);
     std::cout<<"Sending SlowControl start config variables"<<std::endl;
     LAPPDMonData.Print();  
   }
@@ -56,18 +56,7 @@ bool SlowControlConfig::Execute(){
 
 bool SlowControlConfig::Finalise(){
 
-  // SlowControl_Config_Data_class tmp;
-  LAPPDMoniterData LAPPDMonData;
-  // fill config variables for end of run
 
-  zmq::poll(&items[0], 1, -1);
-
-  if ((items [0].revents & ZMQ_POLLOUT)) {
-
-    LAPPDMonData.Send_Config(ConfigSend);
-    std::cout<<"Sending SlowControl end config variables"<<std::endl;
-    LAPPDMonData.Print();
-  }
 
   delete ConfigSend;
   ConfigSend=0;
