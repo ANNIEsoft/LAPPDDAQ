@@ -64,7 +64,7 @@ bool SlowControlConfig::Finalise(){
 
   if ((items [0].revents & ZMQ_POLLOUT)) {
 
-    LAPPDMonData.SendConfig(ConfigSend);
+    LAPPDMonData.Send_Config(ConfigSend);
     std::cout<<"Sending SlowControl end config variables"<<std::endl;
     LAPPDMonData.Print();
   }
