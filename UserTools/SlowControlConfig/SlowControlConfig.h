@@ -29,7 +29,7 @@ class SlowControlConfig: public Tool {
 
  private:
 
-  zmq::socket_t* ConfigSend;
+  zmq::socket_t* SCConfigSend;
   zmq::pollitem_t items[1];
 
 
