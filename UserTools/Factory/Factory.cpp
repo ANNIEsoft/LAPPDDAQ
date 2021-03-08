@@ -8,6 +8,7 @@ if (tool=="DummyTool") ret=new DummyTool;
 if (tool=="MonitorReceive") ret=new MonitorReceive;
 if (tool=="LAPPDConfig") ret=new LAPPDConfig;
 if (tool=="SlowControlConfig") ret=new SlowControlConfig;
-  if (tool=="LAPPDDataReceive") ret=new LAPPDDataReceive;
+if (tool=="LAPPDDataReceive") ret=new LAPPDDataReceive;
+  if (tool=="ParseData") ret=new ParseData;
 return ret;
 }

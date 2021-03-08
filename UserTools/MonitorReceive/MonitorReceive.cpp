@@ -53,16 +53,14 @@ bool MonitorReceive::Execute(){
       std::cout<<"received monitoring data of type: "<<tmp.str()<<std::endl;
 
       if(tmp.str()=="LAPPDMonData"){
-	//receive slowcontrol mon data
-	m_data->LAPPDMonData.Receive_Mon(MonitorReceiver);
-	m_data->LAPPDMonData.Print();
+	     //receive slowcontrol mon data
+	     m_data->LAPPDMonData.Receive_Mon(MonitorReceiver);
+	     m_data->LAPPDMonData.Print();
       }else if(tmp.str()=="LAPPDDaqMonData"){
-	// receive LAPPD monitoring data
-	//m_data->LAPPD_mon_data_class.Receive(MonitorReceive);
+      	// receive LAPPD monitoring data
+      	//m_data->LAPPD_mon_data_class.Receive(MonitorReceive);
         //m_data->LAPPD_mon_data_class.Print();
-	
       }
-
     }
   }
 

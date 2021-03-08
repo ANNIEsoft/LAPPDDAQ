@@ -35,14 +35,22 @@ bool LAPPDDataReceive::Initialise(std::string configfile, DataModel &data){
 
 bool LAPPDDataReceive::Execute(){
 
+  int rec_counter = 0;
+
   zmq::poll(&items[0], 1, 100);
   
   if ((items [0].revents & ZMQ_POLLIN)) {
     
-    m_data->psec.Receive(DataReceive);
-    std::cout<<"Received LAPPD Data"<<std::endl;
-    m_data->psec.Print();
+  	m_data->TCS.PsecClassStore[rec_counter].Receive(DataReceive);
+  	m_data->TCS.PsecClassStore[rec_counter].Print();
   
+
+  	if(m_data->TCS.PsecClassStore[rec_counter].RawWaveform.size() == 7795 && m_data->TCS.PsecClassStore[rec_counter].AccInfoFrame.size() == 32)
+  	{
+  		m_data->TCS.receiveFlag = 1;
+  	}
+    std::cout<<"Received LAPPD Data"<<std::endl;
+    rec_counter++;
   }
 
 

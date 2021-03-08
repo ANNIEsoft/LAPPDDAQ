@@ -3,3 +3,4 @@
 #include "LAPPDConfig.h"
 #include "SlowControlConfig.h"
 #include "LAPPDDataReceive.h"
+#include "ParseData.h"

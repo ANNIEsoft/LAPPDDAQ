@@ -4,3 +4,4 @@ SlowControlConfig SlowControlConfig  configfiles/FakeDAQ/SlowControlConfig
 MonitorReceive MonitorReceive configfiles/FakeDAQ/MonitorReceiveConfig
 LAPPDConfig LAPPDConfig  configfiles/FakeDAQ/LAPPDConfig
 LAPPDDataReceive LAPPDDataReceive configfiles/FakeDAQ/LAPPDDataReceive
+ParseData ParseData configfiles/FakeDAQ/ParseData
